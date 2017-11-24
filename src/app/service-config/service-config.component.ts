@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 
 import { ServiceConfig } from '../model/service-config';
 
@@ -12,6 +12,10 @@ export class ServiceConfigComponent implements OnInit, AfterViewInit {
   public serviceConfigList: ServiceConfig[] = [];
   public selectedConfig: ServiceConfig;
 
+  public currentDate: Date = new Date();
+
+  private dateTimer;
+
   constructor() { 
   	console.log('Component CTOR');
   }
@@ -22,10 +26,19 @@ export class ServiceConfigComponent implements OnInit, AfterViewInit {
   		ServiceConfig.create('UserService', 'BaseURL', 'http://user.vaillant.io', 'STRING', 1),
   		ServiceConfig.create('UserService', 'Database', '172.147.65.43:3306', 'STRING', 2)
   	];
+
+  	this.dateTimer = setInterval(() => { this.currentDate = new Date() }, 1000);
   }
 
   ngAfterViewInit() {
   	console.log('Component ngAfterViewInit()');
+  }
+
+  ngOnDestroy() {
+
+  	if (!!this.dateTimer) {
+  		clearInterval(this.dateTimer);
+  	}
   }
 
   public editItem(model: ServiceConfig): void {

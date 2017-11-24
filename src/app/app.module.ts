@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ServiceConfigComponent } from './service-config/service-config.component';
 import { LoginComponent } from './login/login.component';
 import { ServiceConfigDetailComponent } from './service-config-detail/service-config-detail.component';
+import { CasePipe } from './case.pipe';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ServiceConfigDetailComponent } from './service-config-detail/service-co
     AppComponent,
     ServiceConfigComponent,
     LoginComponent,
-    ServiceConfigDetailComponent
+    ServiceConfigDetailComponent,
+    CasePipe
   ],
   imports: [
     BrowserModule,
