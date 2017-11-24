@@ -1,15 +1,15 @@
 export class ServiceConfig {
 	name: string;
-	key: string;
+	applicationName: string;
 	value: string;
 	type: string;
 	id: number;
 
-	public static create(name, key, value, type, id?: number): ServiceConfig {
+	public static create(applicationName, name, value, type, id?: number): ServiceConfig {
 
 		let model = new ServiceConfig();
 		model.name = name;
-		model.key = key;
+		model.applicationName = applicationName;
 		model.value = value;
 		model.type = type;
 

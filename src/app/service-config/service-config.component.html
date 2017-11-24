@@ -13,8 +13,8 @@
 			<tbody>
 				<tr *ngFor="let config of serviceConfigList">
 					<td><a href="#" (click)="editItem(config)">Güncelle</a></td>
-					<td>{{ config.name | lowercase }}</td>
-					<td>{{ config.key | case:'upper' }}</td>
+					<td>{{ config.applicationName | lowercase }}</td>
+					<td>{{ config.name | case:'upper' }}</td>
 					<td>{{ config.value }}</td>
 					<td>{{ config.type | case }}</td>
 				</tr>

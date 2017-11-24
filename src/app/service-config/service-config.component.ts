@@ -27,7 +27,7 @@ export class ServiceConfigComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   	console.log('Component ngOnInit()');
 
-  	this.serviceConfigList = this.serviceConfigService.getServices();
+  	this.serviceConfigService.getServices().subscribe(result => this.serviceConfigList = result);
 
   	this.dateTimer = setInterval(() => { this.currentDate = new Date() }, 1000);
   }

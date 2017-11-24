@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, ObservableInput } from 'rxjs/Observable';
+
+import { catchError } from 'rxjs/operators';
 
 import { ServiceConfig } from './model/service-config';
 
 @Injectable()
 export class ServiceConfigService {
 
-  private serviceConfigList: ServiceConfig[] = [];
+  private adminBaseUrl = 'http://localhost:8080/admin/';
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     console.log('Service CTOR');
-  	this.serviceConfigList = [
-  		ServiceConfig.create('UserService', 'BaseURL', 'http://user.vaillant.io', 'STRING', 1),
-  		ServiceConfig.create('UserService', 'Database', '172.147.65.43:3306', 'STRING', 2)
-  	];
-
   }
 
-  getServices(): ServiceConfig[] {
-    return this.serviceConfigList;
+  getServices(): Observable<ServiceConfig[]> {
+  	return this.httpClient.get<ServiceConfig[]>(this.adminBaseUrl).pipe(
+      catchError((err, obs) => { return this.handleError(err, obs) })
+  	);
+  }
+
+  private handleError(error: any, observable: Observable<any>): ObservableInput<any> {
+  	console.log(error);
+  	return observable;
   }
 }
