@@ -31,4 +31,8 @@ export class ServiceConfigComponent implements OnInit, AfterViewInit {
   public editItem(model: ServiceConfig): void {
   	this.selectedConfig = model;
   }
+
+  public saveConfig(model: ServiceConfig) {
+  	console.log(model);
+  }
 }

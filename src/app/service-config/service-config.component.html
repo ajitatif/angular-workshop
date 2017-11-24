@@ -23,6 +23,6 @@
 		<p *ngIf="serviceConfigList.length == 0">Kayıt Bulunmamaktadır</p>
 	</div>
 	<div>
-		<app-service-config-detail [model]="selectedConfig"></app-service-config-detail>
+		<app-service-config-detail [model]="selectedConfig" (onSave)="saveConfig($event)"></app-service-config-detail>
 	</div>
 </div>

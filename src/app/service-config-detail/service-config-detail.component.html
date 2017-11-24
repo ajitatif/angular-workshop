@@ -1,4 +1,5 @@
 <div *ngIf="!!model">
+	<hr />
 	<form class="form">
 		<div class="form-group">
 			<label for="txtName">Uygulama Adı : </label>
@@ -15,6 +16,10 @@
 		<div class="form-group">
 			<label for="txtType">Tür : </label>
 			<input id="txtType" name="type" value="{{ model.type }}" />
+		</div>
+		<div class="form-group">
+			<button type="button" class="btn btn-default" (click)="cancel()">İptal</button>
+			<button type="button" class="btn btn-primary" (click)="save()">Kaydet</button>
 		</div>
 	</form>
 </div>
