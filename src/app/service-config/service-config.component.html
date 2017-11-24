@@ -1,0 +1,28 @@
+<div>
+	<div>
+		<table *ngIf="serviceConfigList.length > 0" class="table table-hover">
+			<thead>
+				<tr>
+					<th>Güncelle</th>
+					<th>Uygulama Adı</th>
+					<th>Anahtar</th>
+					<th>Değer</th>
+					<th>Tür</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let config of serviceConfigList">
+					<td><a href="#" (click)="editItem(config)">Güncelle</a></td>
+					<td>{{ config.name }}</td>
+					<td>{{ config.key }}</td>
+					<td>{{ config.value }}</td>
+					<td>{{ config.type }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<p *ngIf="serviceConfigList.length == 0">Kayıt Bulunmamaktadır</p>
+	</div>
+	<div>
+		<app-service-config-detail [model]="selectedConfig"></app-service-config-detail>
+	</div>
+</div>
