@@ -29,10 +29,15 @@ export class ServiceConfigComponent implements OnInit, AfterViewInit {
   }
 
   public editItem(model: ServiceConfig): void {
-  	this.selectedConfig = model;
+  	this.selectedConfig = JSON.parse(JSON.stringify(model));
   }
-
+ 
   public saveConfig(model: ServiceConfig) {
-  	console.log(model);
+  	for (let i = 0; i < this.serviceConfigList.length; i++) {
+  	  if (this.serviceConfigList[i].id === model.id) {
+  	  	this.serviceConfigList[i] = model;
+  	  	break;
+  	  }
+  	}
   }
 }

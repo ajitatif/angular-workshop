@@ -1,0 +1,11 @@
+button[disabled] {
+	background-color: red;
+}
+
+.invalid {
+	border: 2px solid red;
+}
+
+.hide {
+	display: none;
+}

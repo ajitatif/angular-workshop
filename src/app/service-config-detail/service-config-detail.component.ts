@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { ServiceConfig } from '../model/service-config';
 
@@ -11,6 +11,9 @@ export class ServiceConfigDetailComponent implements OnInit {
 
   @Input()
   model: ServiceConfig;
+
+  @ViewChild('theForm')
+  public theForm;
 
   @Output()
   onSave: EventEmitter<ServiceConfig> = new EventEmitter<ServiceConfig>();
@@ -25,11 +28,9 @@ export class ServiceConfigDetailComponent implements OnInit {
   }
 
   public save(): void {
-  	this.model.name = document.querySelector('input[name="name"]')['value'];
-  	this.model.key = document.querySelector('input[name="key"]')['value'];
-  	this.model.type = document.querySelector('input[name="type"]')['value'];
-  	this.model.value = document.querySelector('input[name="value"]')['value'];
+  	console.log(`Form valid: ${this.theForm.valid}`);
   	this.onSave.emit(this.model);
+  	this.model = undefined;
   }
 
 }

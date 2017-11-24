@@ -1,25 +1,31 @@
 <div *ngIf="!!model">
 	<hr />
-	<form class="form">
-		<div class="form-group">
+	<form class="form" (ngSubmit)="save()" #theForm="ngForm">
+		<div class="form-group" [class.invalid]="!txtName.valid">
 			<label for="txtName">Uygulama Adı : </label>
-			<input id="txtName" name="name" value="{{ model.name }}" />
+			<input id="txtName" name="name" #txtName="ngModel" [(ngModel)]="model.name" required minlength="8" />
+			<p *ngIf="txtName.errors.minlength">8 Karakter Girmelisin</p>
+			<p *ngIf="txtName.errors.required">Bir Değer Girmelisin</p>
 		</div>
 		<div class="form-group">
 			<label for="txtKey">Anahtar : </label>
-			<input id="txtKey" name="key" value="{{ model.key }}" />
+			<input id="txtKey" name="key" [(ngModel)]="model.key" required />
 		</div>
 		<div class="form-group">
 			<label for="txtValue">Değer : </label>
-			<input id="txtValue" name="value" value="{{ model.value }}" />
+			<input id="txtValue" name="value" [(ngModel)]="model.value" required />
 		</div>
 		<div class="form-group">
-			<label for="txtType">Tür : </label>
-			<input id="txtType" name="type" value="{{ model.type }}" />
+			<label for="selType">Tür : </label>
+			<select id="selType" name="type" [(ngModel)]="model.type">
+				<option value="STRING">Metin İçerik</option>
+				<option value="NUMBER">Sayı</option>
+				<option value="DATE">Tarih</option>
+			</select>
 		</div>
 		<div class="form-group">
 			<button type="button" class="btn btn-default" (click)="cancel()">İptal</button>
-			<button type="button" class="btn btn-primary" (click)="save()">Kaydet</button>
+			<button type="submit" class="btn btn-primary" [disabled]="!theForm.valid">Kaydet</button>
 		</div>
 	</form>
 </div>
