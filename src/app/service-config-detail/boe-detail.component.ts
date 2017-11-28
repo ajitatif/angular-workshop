@@ -7,11 +7,11 @@ import { ServiceConfigService } from '../service-config.service';
 import { ServiceConfig } from '../model/service-config';
 
 @Component({
-  selector: 'app-service-config-detail',
+  selector: 'app-service-boe-detail',
   templateUrl: './service-config-detail.component.html',
   styleUrls: ['./service-config-detail.component.css']
 })
-export class ServiceConfigDetailComponent implements OnInit {
+export class BoeDetailComponent implements OnInit {
 
   @Input()
   model: ServiceConfig;
@@ -27,7 +27,6 @@ export class ServiceConfigDetailComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       console.log(params);
-      this.loadModel(params.id);
     });
   }
 

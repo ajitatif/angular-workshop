@@ -3,11 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ServiceConfigDetailComponent } from './service-config-detail/service-config-detail.component';
 import { ServiceConfigComponent } from './service-config/service-config.component';
+import { BoeDetailComponent } from './service-config-detail/boe-detail.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' }, 
 	{ path: 'home', component: ServiceConfigComponent }, 
-	{ path: 'view', component: ServiceConfigDetailComponent }
+	{ path: 'view', component: ServiceConfigDetailComponent },
+	{ path: 'view/cheqeue/:id', component: ServiceConfigDetailComponent },
+	{ path: 'view/boe/:id', component: BoeDetailComponent }
 ] 
 
 @NgModule({

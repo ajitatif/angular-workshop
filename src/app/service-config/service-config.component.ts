@@ -7,8 +7,7 @@ import { ServiceConfigService } from '../service-config.service';
 @Component({
   selector: 'app-service-config',
   templateUrl: './service-config.component.html',
-  styleUrls: ['./service-config.component.css'],
-  providers: [ ServiceConfigService ]
+  styleUrls: ['./service-config.component.css']
 })
 export class ServiceConfigComponent implements OnInit, AfterViewInit {
 

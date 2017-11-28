@@ -12,7 +12,7 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let config of serviceConfigList">
-					<td><a routerLink="/view">Güncelle</a></td>
+					<td><a [routerLink]="[ '/view/boe', config.id ]">Güncelle</a></td>
 					<td>{{ config.applicationName | lowercase }}</td>
 					<td>{{ config.name | case:'upper' }}</td>
 					<td>{{ config.value }}</td>

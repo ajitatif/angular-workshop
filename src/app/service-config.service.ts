@@ -24,6 +24,13 @@ export class ServiceConfigService {
   	);
   }
 
+  getById(id: number): Observable<ServiceConfig> {
+
+    return this.httpClient.get<ServiceConfig>(`${this.adminBaseUrl}${id}`)
+      .pipe(catchError((err, obs) => { return this.handleError(err, obs)}));
+
+  }
+
   private mapData(data: ServiceConfig[]): ServiceConfig[] {
   	return data.map(datum => { 
   		datum.name = '--' + datum.name + '--'; 
