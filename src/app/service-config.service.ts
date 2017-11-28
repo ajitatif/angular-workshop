@@ -6,13 +6,16 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { ServiceConfig } from './model/service-config';
 
+import { environment } from '../environments/environment';
+
 @Injectable()
 export class ServiceConfigService {
 
-  private adminBaseUrl = 'http://localhost:8080/admin/';
+  private adminBaseUrl: string;
 
   constructor(private httpClient: HttpClient) {
     console.log('Service CTOR');
+    this.adminBaseUrl = environment.serviceConfigAdminUrl;
   }
 
   getServices(): Observable<ServiceConfig[]> {
@@ -33,7 +36,6 @@ export class ServiceConfigService {
 
   private mapData(data: ServiceConfig[]): ServiceConfig[] {
   	return data.map(datum => { 
-  		datum.name = '--' + datum.name + '--'; 
   		return datum;
   	});
   }

@@ -11,8 +11,7 @@ export class CasePipe implements PipeTransform {
   	} else if (args === 'upper') {
   	  return value.toUpperCase();
   	}
-
-    return null;
+    return value;
   }
 
 }
